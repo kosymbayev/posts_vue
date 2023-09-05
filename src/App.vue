@@ -2,9 +2,15 @@
     <div class="app">
         <h1>Страница с постами</h1>
 
-        <TheButton @click="showDialog" style="margin: 15px 0;">
-            Создать пост
-        </TheButton>
+        <div class="app_btns">
+            <TheButton @click="showDialog">
+                Создать пост
+            </TheButton>
+            <TheSelect 
+                v-model="selectedSort"
+                :options="sortOptions"
+            />
+        </div>
 
         <TheModal v-model:show="isModalVisible">
             <PostForm @create="createPost" />
@@ -34,8 +40,22 @@ export default {
     data() {
         return {
             posts: [],
+
             isModalVisible: false,
             isPostsLoading: false,
+
+            selectedSort: '',
+            sortOptions:
+            [
+                {
+                    value: 'title',
+                    name: 'По названию'
+                },
+                {
+                    value: 'body',
+                    name: 'По описанию'
+                }
+            ]
         }
     },
     methods: 
@@ -89,5 +109,10 @@ export default {
 {
     padding: 20px;
 }
-
+.app_btns
+{
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+}
 </style>
