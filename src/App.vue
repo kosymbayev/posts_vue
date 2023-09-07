@@ -2,6 +2,11 @@
     <div class="app">
         <h1>Страница с постами</h1>
 
+        <TheInput
+            v-model="searchQuery"
+            placeholder="Поиск...."
+        />
+
         <div class="app_btns">
             <TheButton @click="showDialog">
                 Создать пост
@@ -17,7 +22,7 @@
         </TheModal>
 
         <PostList 
-            :posts="posts"
+            :posts="sortedAndSearchedPosts"
             @remove="removePost" 
             v-if="!isPostsLoading"
         />
@@ -44,6 +49,8 @@ export default {
             isModalVisible: false,
             isPostsLoading: false,
 
+            searchQuery: '',
+    
             selectedSort: '',
             sortOptions:
             [
@@ -55,7 +62,7 @@ export default {
                     value: 'body',
                     name: 'По описанию'
                 }
-            ]
+            ],
         }
     },
     methods: 
@@ -94,7 +101,18 @@ export default {
     mounted()
     {
         this.fetchPosts();
-    }
+    },
+    computed:
+    {
+        sortedPosts()
+        {
+            return [...this.posts].sort( (post1, post2) => post1[this.selectedSort]?.localeCompare(post2[this.selectedSort]) )
+        },
+        sortedAndSearchedPosts()
+        {
+            return this.sortedPosts.filter(post => post.title.toLowerCase().includes(this.searchQuery.toLowerCase()))
+        }
+    },
 }
 </script>
 

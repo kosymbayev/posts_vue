@@ -7,14 +7,6 @@
 <script>
 export default {
     name: 'TheButton',
-    props: 
-    {
-        post: 
-        {
-            type: Object,
-            required: true
-        }
-    }
 }
 </script>
 
