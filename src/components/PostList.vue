@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import PostItem from './PostItem.vue';
+import PostItem from '/src/components/PostItem.vue';
 
 export default {
     components: 
