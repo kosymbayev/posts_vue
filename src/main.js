@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import router from '@/router/router'
 
-import components from './components/UI';
+import components from '@/components/UI';
 
 const app = createApp(App);
 
@@ -9,4 +10,6 @@ components.forEach(component => {// Глобальная регистрация 
     app.component(component.name, component);
 })
 
-app.mount('#app');
+app
+    .use(router)
+    .mount('#app');
