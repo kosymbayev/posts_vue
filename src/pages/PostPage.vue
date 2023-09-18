@@ -4,6 +4,7 @@
 
         <!-- Поиск -->
         <TheInput
+            v-focus
             v-model="searchQuery"
             placeholder="Поиск...."
         />
@@ -32,7 +33,11 @@
             v-if="!isPostsLoading"
         />
         <div v-else>Загрузка постов...</div>
-        <div ref="observer" class="observer"></div>
+        
+        <div v-intersection="loadMorePosts" class="observer"></div>
+        
+        <!-- <div ref="observer" class="observer"></div> -->
+        
         <!--
         <div class="page_wrapper">
             <div 
@@ -160,6 +165,7 @@ export default {
     {
         this.fetchPosts();
 
+        /* //Observer
         let options = {
             rootMargin: "0px",
             threshold: 1.0,
@@ -174,6 +180,7 @@ export default {
         let observer = new IntersectionObserver(callback, options);
         
         observer.observe(this.$refs.observer)
+        */
 
     },
     computed:

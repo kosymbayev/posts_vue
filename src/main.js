@@ -3,11 +3,16 @@ import App from './App.vue'
 import router from '@/router/router'
 
 import components from '@/components/UI';
+import directives from '@/directives';
 
 const app = createApp(App);
 
 components.forEach(component => {// Глобальная регистрация компонентов
     app.component(component.name, component);
+})
+
+directives.forEach(directive => {// Регистрация кастомных директив
+    app.directive(directive.name, directive);
 })
 
 app
