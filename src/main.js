@@ -1,6 +1,7 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from '@/router/router'
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from '@/router/router';
+import store from '@/store';
 
 import components from '@/components/UI';
 import directives from '@/directives';
@@ -17,4 +18,5 @@ directives.forEach(directive => {// Регистрация кастомных д
 
 app
     .use(router)
+    .use(store)
     .mount('#app');
