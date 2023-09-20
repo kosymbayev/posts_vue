@@ -17,6 +17,10 @@ export default {
     padding: 0;
     box-sizing: border-box;
 }
+body
+{
+    overflow-x: hidden;
+}
 .app
 {
     padding: 20px;
