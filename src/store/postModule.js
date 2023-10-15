@@ -32,6 +32,9 @@ export const postModule = {
     },
     mutations:
     {
+        setIsModalVisible(state, isVisible) {
+            state.isModalVisible = isVisible;
+        },
         setPosts(state, posts) {
             state.posts = posts;
         },

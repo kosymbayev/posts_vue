@@ -1,3 +1,5 @@
+import { mapMutations } from 'vuex';
+
 export default {
     props:
     {
@@ -9,9 +11,12 @@ export default {
     },
     methods:
     {
+        ...mapMutations({
+            setIsModalVisible: 'post/setIsModalVisible'
+        }),
         hideModal()
         {
-            this.$emit('update:show', false);
+            this.setIsModalVisible(false)
         }
     },
 }
